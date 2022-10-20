@@ -3,15 +3,15 @@ import React from 'react'
 import { useValue } from '../context/ContextProvider'
 
 const Notification = () => {
-    const {state:{alert}, dispatch} = useValue()
+  const { state: { alert }, dispatch } = useValue()
 
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') return;
-      dispatch({type:'UPDATE_ALERT', payload: {...alert, open:false}})
-    }
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') return;
+    dispatch({ type: 'UPDATE_ALERT', payload: { ...alert, open: false } })
+  }
   return (
-    <Snackbar open={alert.open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{vertical:'top', horizontal:'center'}}>
-<Alert onClose={handleClose} severity={alert.severity} sx={{width:'400'}} variant='filled' elevation={6}>{alert.message}</Alert>
+    <Snackbar open={alert.open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+      <Alert onClose={handleClose} severity={alert.severity} sx={{ width: '400' }} variant='filled' elevation={6}>{alert.message}</Alert>
     </Snackbar>
   )
 }

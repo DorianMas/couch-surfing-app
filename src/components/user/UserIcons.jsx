@@ -1,12 +1,15 @@
 import { Mail, Notifications } from '@mui/icons-material'
-import { Avatar, Box, IconButton, Badge,Tooltip } from '@mui/material'
-import React, {useState} from 'react'
+import { Avatar, Box, IconButton, Badge, Tooltip } from '@mui/material'
+import React, { useState } from 'react'
 import { useValue } from '../../context/ContextProvider'
+import useCheckToken from '../hooks/useCheckToken'
 import UserMenu from './UserMenu'
 
 const UserIcons = () => {
 
-  const {state:{currentUser}} = useValue()
+  useCheckToken()
+
+  const { state: { currentUser } } = useValue()
 
 
   const [anchorUserMenu, setAnchorUserMenu] = useState(null)
@@ -15,22 +18,22 @@ const UserIcons = () => {
     <Box>
       <IconButton size='large' color='inherit'>
         <Badge color='error' badgeContent={5}>
-          <Mail/>
+          <Mail />
         </Badge>
       </IconButton>
       <IconButton size='large' color='inherit'>
         <Badge color='error' badgeContent={20}>
-          <Notifications/>
+          <Notifications />
         </Badge>
       </IconButton>
       <Tooltip title='Open User Settings'>
-        <IconButton onClick={(e)=>setAnchorUserMenu(e.currentTarget)}>
+        <IconButton onClick={(e) => setAnchorUserMenu(e.currentTarget)}>
           <Avatar src={currentUser?.photoURL} alt={currentUser?.name}>
             {currentUser?.name?.charAt(0).toUpperCase()}
           </Avatar>
         </IconButton>
       </Tooltip>
-      <UserMenu anchorUserMenu={anchorUserMenu} setAnchorUserMenu={setAnchorUserMenu}/>
+      <UserMenu anchorUserMenu={anchorUserMenu} setAnchorUserMenu={setAnchorUserMenu} />
     </Box>
   )
 }

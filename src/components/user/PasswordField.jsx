@@ -2,7 +2,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { IconButton, InputAdornment, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
-const PasswordField = ({passwordRef, id="password", label='Password'}) => {
+const PasswordField = ({ passwordRef, id = "password", label = 'Password' }) => {
 
   const [showPassword, setShowPassword] = useState(false)
 
@@ -14,15 +14,15 @@ const PasswordField = ({passwordRef, id="password", label='Password'}) => {
   }
 
   return (
-  <TextField autoFocus margin='normal' variant='standard' id={id} label={label} type={showPassword ? 'text':'password'} fullWidth inputRef={passwordRef} inputProps={{minLengh:6}} InputProps={{
-    endAdornment: (
+    <TextField margin='normal' variant='standard' id={id} label={label} type={showPassword ? 'text' : 'password'} fullWidth inputRef={passwordRef} inputProps={{ minLengh: 6 }} InputProps={{
+      endAdornment: (
         <InputAdornment position='end'>
-        <IconButton onClick={handleClick} onMouseDown={handleMouseDown}>
-            {showPassword ? <VisibilityOff/> : <Visibility/>}
-        </IconButton>
+          <IconButton onClick={handleClick} onMouseDown={handleMouseDown}>
+            {showPassword ? <VisibilityOff /> : <Visibility />}
+          </IconButton>
         </InputAdornment>
-    )
-  }} required/>
+      )
+    }} required />
 
   )
 }

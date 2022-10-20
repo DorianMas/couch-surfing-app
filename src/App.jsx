@@ -5,13 +5,13 @@ import Notification from "./components/Notification";
 import Login from "./components/user/Login";
 
 const App = () => {
-  return(
-  <>
-  <Loading/>
-  <Notification/>
-  <Login/>
-  <NavBar/>
-  </>
+  return (
+    <>
+      <Loading />
+      <Notification />
+      <Login />
+      <NavBar />
+    </>
   )
 };
 
